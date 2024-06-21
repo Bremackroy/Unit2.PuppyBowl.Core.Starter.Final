@@ -16,7 +16,7 @@ const fetchAllPlayers = async () => {
     console.error("Uh oh, trouble fetching players!", err);
   }
 };
-fetchAllPlayers();
+//fetchAllPlayers();
 
 
 /**
@@ -33,7 +33,7 @@ const fetchSinglePlayer = async (playerId) => {
     console.error(`Oh no, trouble fetching player #${playerId}!`, err);
   }
 };
-fetchSinglePlayer();
+//fetchSinglePlayer(8377);
 
 /**
  * Adds a new player to the roster via the API.
@@ -49,8 +49,8 @@ const addNewPlayer = async (playerObj) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: 'Coco',
-        breed: 'French Bulldog',
+        name: playerObj.name,
+        breed: playerObj.breed,
       }),
     }
   );
@@ -60,19 +60,17 @@ const addNewPlayer = async (playerObj) => {
     console.error("Oops, something went wrong with adding that player!", err);
   }
 };
-fetchaddNewPlayer();
+puppy = {name: "asdads", breed: "asdasd"}
+//addNewPlayer(puppy);
 
 /**
  * Removes a player from the roster via the API.
  * @param {number} playerId the ID of the player to remove
  */
-fetch(`https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/players/#${playerId}`, {
-  method: 'DELETE'
-});
 const removePlayer = async (playerId) => {
   try {
     const response = await fetch(
-      `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/players/#${playerId}`,
+      `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/players/${playerId}`,
       {
         method: 'DELETE',
       }
@@ -86,7 +84,9 @@ const removePlayer = async (playerId) => {
     );
   }
 };
-fetchremovePlayer();
+
+//removePlayer(8377);
+console.log(fetchAllPlayers());
 
 /**
  * Updates `<main>` to display a list of all players.
@@ -109,6 +109,7 @@ fetchremovePlayer();
  */
 const renderAllPlayers = (playerList) => {
   // TODO
+  //do a for loop to iterate the list
 };
 
 /**
